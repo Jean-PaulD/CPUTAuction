@@ -5,30 +5,43 @@
 package Users.Accounts;
 
 import Users.service.UsersService;
+import java.security.Timestamp;
 import java.util.List;
 
 /**
  *
  * @author Jean-Paul
  */
-class Users implements UsersService {
+public class Logs implements UsersService {
 
     private String id;
     private String username;
     private String password;
-    private List<Logs> logs;
+    private Timestamp log;
 
-    private Users(Builder aThis) {
+    private Logs() {
+    }
+
+    private Logs(Builder aThis) {
+
         username = aThis.username;
         password = aThis.password;
     }
 
+    public Timestamp getLog() {
+        return log;
+    }
+
     public String username(String uName) {
-        return uName;
+        return username;
     }
 
     public String password(String pWord) {
         return password;
+    }
+
+    public String getID() {
+        return id;
     }
 
     public class Builder {
@@ -36,25 +49,24 @@ class Users implements UsersService {
         private String id;
         private String username;
         private String password;
-        private List<Logs> logs;
+        private Timestamp log;
 
         public Builder(String username, String password) {
             this.username = username;
             this.password = password;
         }
+        
+        public Timestamp getLog(){
+            return log;
+        }
 
-        public Builder id(String value) {
+        public Logs.Builder id(String value) {
             id = value;
             return this;
         }
 
-        public Builder logs(List<Logs> value) {
-            logs = value;
-            return this;
-        }
-
-        public Users build() {
-            return new Users(this);
+        public Logs build() {
+            return new Logs(this);
         }
     }
 
@@ -67,17 +79,13 @@ class Users implements UsersService {
             return false;
         }
 
-        Users users = (Users) o;
+        Logs logs = (Logs) o;
 
-        if (!id.equals(users.id)) {
+        if (!id.equals(logs.id)) {
             return false;
         }
 
         return true;
-    }
-
-    public String getID() {
-        return id;
     }
 
     @Override
