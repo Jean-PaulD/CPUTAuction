@@ -10,7 +10,7 @@ import Users.service.UsersService;
  *
  * @author Jean-Paul
  */
-class Admin implements UsersService {
+public class Admin implements UsersService {
 
     private String username;
     private String password;
@@ -57,12 +57,15 @@ class Admin implements UsersService {
         return id.hashCode();
     }
 
-    public class Builder {
+    public static class Builder {
 
         private String username;
         private String password;
         private String userType = "admin";
         private String id;
+
+        public Builder() {
+        }
 
         public Builder(String username, String password) {
             this.username = username;

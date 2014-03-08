@@ -2,46 +2,48 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Users.Accounts;
+package Bid;
 
-import Users.service.UsersService;
-import java.security.Timestamp;
+import Users.Accounts.Logs;
 import java.util.List;
 
 /**
  *
  * @author Jean-Paul
  */
-public class Logs implements UsersService {
+public class BidsWon {
 
     private String id;
     private String username;
     private String password;
-    private Timestamp log;
+    private String bidWon;
+    private double bidPrice;
 
-    private Logs() {
+    private BidsWon(Builder builder) {
+        bidPrice = builder.bidPrice;
+        bidWon = builder.bidWon;
+        password = builder.password;
+        username = builder.username;
     }
 
-    private Logs(Builder aThis) {
-
-        username = aThis.username;
-        password = aThis.password;
+    public String getId() {
+        return id;
     }
 
-    public Timestamp getLog() {
-        return log;
-    }
-
-    public String username(String uName) {
+    public String getUsername() {
         return username;
     }
 
-    public String password(String pWord) {
+    public String getPassword() {
         return password;
     }
 
-    public String getID() {
-        return id;
+    public String getBidWon() {
+        return bidWon;
+    }
+
+    public double getBidPrice() {
+        return bidPrice;
     }
 
     public static class Builder {
@@ -49,24 +51,21 @@ public class Logs implements UsersService {
         private String id;
         private String username;
         private String password;
-        private Timestamp log;
-public Builder(){}
+        private String bidWon;
+        private double bidPrice;
+        public Builder(){}
         public Builder(String username, String password) {
             this.username = username;
             this.password = password;
         }
-        
-        public Timestamp getLog(){
-            return log;
-        }
 
-        public Logs.Builder id(String value) {
+        public BidsWon.Builder id(String value) {
             id = value;
             return this;
         }
 
-        public Logs build() {
-            return new Logs(this);
+        public BidsWon build() {
+            return new BidsWon(this);
         }
     }
 
@@ -79,13 +78,17 @@ public Builder(){}
             return false;
         }
 
-        Logs logs = (Logs) o;
+        BidsWon bidsWon = (BidsWon) o;
 
-        if (!id.equals(logs.id)) {
+        if (!id.equals(bidsWon.id)) {
             return false;
         }
 
         return true;
+    }
+
+    public String getID() {
+        return id;
     }
 
     @Override

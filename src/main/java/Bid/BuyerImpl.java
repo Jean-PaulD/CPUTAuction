@@ -2,16 +2,17 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Seller;
+package Bid;
 
 import Bid.Bid;
+import Bid.service.BuyerService;
 import java.util.List;
 
 /**
  *
  * @author Jean-Paul
  */
-public class SellerImpl implements SellerService {
+public class BuyerImpl implements BuyerService {
 
     private String id;
     private String username;
@@ -20,10 +21,11 @@ public class SellerImpl implements SellerService {
     private String surname;
     private String email;
     private String phone;
-    private List<SellerImpl> bid;
+    private List<BuyerImpl> bid;
 
-    private  SellerImpl(SellerImpl.Builder builder){}
-    
+    private BuyerImpl(Builder builder) {
+    }
+
     public String username(String uName) {
         return uName;
     }
@@ -66,8 +68,10 @@ public class SellerImpl implements SellerService {
         private String email;
         private String phone;
         private List<Bid> bid;
-        
-        public Builder(){}
+
+        public Builder() {
+        }
+
         public Builder(String username, String password,
                 String name) {
             this.username = username;
@@ -75,18 +79,18 @@ public class SellerImpl implements SellerService {
             this.name = name;
         }
 
-        public SellerImpl.Builder bid(List<Bid> value){
-            bid=value;
+        public Builder bid(List<Bid> value) {
+            bid = value;
             return this;
         }
-        
-        public SellerImpl.Builder id(String value) {
+
+        public BuyerImpl.Builder id(String value) {
             id = value;
             return this;
         }
 
-        public SellerImpl build() {
-            return new SellerImpl(this);
+        public BuyerImpl build() {
+            return new BuyerImpl(this);
         }
     }
 
@@ -99,7 +103,7 @@ public class SellerImpl implements SellerService {
             return false;
         }
 
-        SellerImpl bid = (SellerImpl) o;
+        BuyerImpl bid = (BuyerImpl) o;
 
         if (!id.equals(bid.id)) {
             return false;

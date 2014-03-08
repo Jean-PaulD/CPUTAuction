@@ -9,5 +9,6 @@ package Items.sesrvice;
  * @author Jean-Paul
  */
 public interface ItemService {
-    
+    double itemPrice();
+    String itemName();
 }

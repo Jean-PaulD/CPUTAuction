@@ -2,25 +2,32 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Users.Accounts;
+package Bid;
 
-import Users.service.UsersService;
+import Bid.service.BuyerService;
+import Users.Accounts.Logs;
 import java.util.List;
 
 /**
  *
  * @author Jean-Paul
  */
-public class Users implements UsersService {
+public class Bid implements BuyerService {
 
     private String id;
     private String username;
     private String password;
-    private List<Logs> logs;
-
-    private Users(Builder aThis) {
-        username = aThis.username;
-        password = aThis.password;
+    private List<BidsWon> bidsWon;
+    private List<CancelBid> cancelBid;
+    private List<CurrentBid> currentBid;
+    
+    private Bid(){}
+    private Bid(Builder builder) {
+        bidsWon = builder.bidsWon;
+        cancelBid = builder.cancelBid;
+        currentBid = builder.currentBid;
+        username = builder.username;
+        password = builder.password;
     }
 
     public String username(String uName) {
@@ -36,25 +43,39 @@ public class Users implements UsersService {
         private String id;
         private String username;
         private String password;
-        private List<Logs> logs;
-public Builder(){}
+        private List<BidsWon> bidsWon;
+        private List<CancelBid> cancelBid;
+        private List<CurrentBid> currentBid;
+
+        public Builder(){}
         public Builder(String username, String password) {
+            
             this.username = username;
             this.password = password;
         }
 
-        public Builder id(String value) {
+        public Bid.Builder id(String value) {
             id = value;
             return this;
         }
 
-        public Builder logs(List<Logs> value) {
-            logs = value;
+        public Bid.Builder bidsWon(List<BidsWon> value) {
+            bidsWon = value;
             return this;
         }
 
-        public Users build() {
-            return new Users(this);
+        public Bid.Builder cancelBid(List<CancelBid> value) {
+            cancelBid = value;
+            return this;
+        }
+
+        public Bid.Builder currentBid(List<CurrentBid> value) {
+            currentBid = value;
+            return this;
+        }
+
+        public Bid build() {
+            return new Bid(this);
         }
     }
 
@@ -67,9 +88,9 @@ public Builder(){}
             return false;
         }
 
-        Users users = (Users) o;
+        Bid bid = (Bid) o;
 
-        if (!id.equals(users.id)) {
+        if (!id.equals(bid.id)) {
             return false;
         }
 

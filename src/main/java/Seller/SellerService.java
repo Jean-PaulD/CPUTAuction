@@ -4,10 +4,17 @@
  */
 package Seller;
 
+import Users.service.UsersService;
+
 /**
  *
  * @author Jean-Paul
  */
-public interface SellerService {
+public interface SellerService  extends UsersService {
+
+    String username(String uName);
+    
+    String password(String pWord);
+    
     
 }

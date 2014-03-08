@@ -69,6 +69,10 @@ public final class Accounts implements UsersService {
         return studentNumber;
     }
 
+    public Object getID() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public static class Builder {
 
         private String id;
