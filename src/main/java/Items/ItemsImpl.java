@@ -5,7 +5,7 @@
 package Items;
 
 import Items.Electronics.Electronics;
-import Items.sesrvice.ItemService;
+import Items.service.ItemService;
 import java.util.List;
 
 /**
